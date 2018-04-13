@@ -1,8 +1,10 @@
 // Helper functions for music
-
+#include <stdio.h>
 #include <cs50.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
+#include <ctype.h>
 #include "helpers.h"
 
 // Converts a fraction formatted as X/Y to eighths
@@ -86,9 +88,30 @@ int frequency(string note)
 
     octaveFloat = atoi(octave);
 
+    // if (strcmp(test, "A") == 0)
+    // {
+    //     semiTones = (octaveFloat - 4) * 12;
+    //     // A5 multiply by 2 A6 multiply by 4
+    //     // multiplier =
+    //     hertzFloat = round((pow(2, (semiTones / 12)) * 440));
+    // }
+    // else if (strcmp(test, "A#") == 0)
+    // {
+    //     semiTones = (octaveFloat - 4) * 12;
+    //     hertzFloat = (pow(2, (semiTones / 12)) * 440);
+    //     hertzFloat = round(hertzFloat * (pow(2, (one / 12))));
+    // }
+    // else if (strcmp(test, "Ab") == 0)
+    // {
+    //     semiTones = (octaveFloat - 4) * 12;
+    //     hertzFloat = (pow(2, (semiTones / 12)) * 440);
+    //     // printf("hertzFIRST is %i\n", hertz);
+    //     hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
+    // }
+
     if (strcmp(test, "A") == 0)
     {
-        semiTones = (octaveFloat - 4) * 12;
+        semiTones = (octaveFloat - 4) * 12;    //2, 14, 26;
         // A5 multiply by 2 A6 multiply by 4
         // multiplier =
         hertzFloat = round((pow(2, (semiTones / 12)) * 440));
@@ -107,10 +130,133 @@ int frequency(string note)
         hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
     }
 
-    else
+    if (strcmp(test, "B") == 0)
     {
-        hertzFloat = 0;
+        semiTones = ((octaveFloat - 4) * 12) + 2;    //2, 14, 26;
+        // A5 multiply by 2 A6 multiply by 4
+        // multiplier =
+        hertzFloat = round((pow(2, (semiTones / 12)) * 440));
     }
+    // else if (strcmp(test, "B#") == 0)
+    // {
+    //     semiTones = ((octaveFloat - 4) * 12) + 2;
+    //     hertzFloat = (pow(2, (semiTones / 12)) * 440);
+    //     hertzFloat = round(hertzFloat * (pow(2, (one / 12))));
+    // }
+    else if (strcmp(test, "Bb") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) + 2;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        // printf("hertzFIRST is %i\n", hertz);
+        hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
+    }
+
+    if (strcmp(test, "C") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 9;    //2, 14, 26;
+        // A5 multiply by 2 A6 multiply by 4
+        // multiplier =
+        hertzFloat = round((pow(2, (semiTones / 12)) * 440));
+    }
+    else if (strcmp(test, "C#") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 9;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        hertzFloat = round(hertzFloat * (pow(2, (one / 12))));
+    }
+    else if (strcmp(test, "Cb") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 9;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        // printf("hertzFIRST is %i\n", hertz);
+        hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
+    }
+
+    if (strcmp(test, "D") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 7;    //2, 14, 26;
+        // A5 multiply by 2 A6 multiply by 4
+        // multiplier =
+        hertzFloat = round((pow(2, (semiTones / 12)) * 440));
+    }
+    else if (strcmp(test, "D#") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 7;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        hertzFloat = round(hertzFloat * (pow(2, (one / 12))));
+    }
+    else if (strcmp(test, "Db") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 7;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        // printf("hertzFIRST is %i\n", hertz);
+        hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
+    }
+
+    if (strcmp(test, "E") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 5;    //2, 14, 26;
+        // A5 multiply by 2 A6 multiply by 4
+        // multiplier =
+        hertzFloat = round((pow(2, (semiTones / 12)) * 440));
+    }
+    // else if (strcmp(test, "E#") == 0)
+    // {
+    //     semiTones = ((octaveFloat - 4) * 12) - 5;
+    //     hertzFloat = (pow(2, (semiTones / 12)) * 440);
+    //     hertzFloat = round(hertzFloat * (pow(2, (one / 12))));
+    // }
+    else if (strcmp(test, "Eb") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 5;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        // printf("hertzFIRST is %i\n", hertz);
+        hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
+    }
+
+    if (strcmp(test, "F") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 4;    //2, 14, 26;
+        // A5 multiply by 2 A6 multiply by 4
+        // multiplier =
+        hertzFloat = round((pow(2, (semiTones / 12)) * 440));
+    }
+    else if (strcmp(test, "F#") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 4;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        hertzFloat = round(hertzFloat * (pow(2, (one / 12))));
+    }
+    else if (strcmp(test, "Fb") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 4;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        // printf("hertzFIRST is %i\n", hertz);
+        hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
+    }
+
+    if (strcmp(test, "G") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 2;    //2, 14, 26;
+        // A5 multiply by 2 A6 multiply by 4
+        // multiplier =
+        hertzFloat = round((pow(2, (semiTones / 12)) * 440));
+    }
+    else if (strcmp(test, "G#") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 2;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        hertzFloat = round(hertzFloat * (pow(2, (one / 12))));
+    }
+    else if (strcmp(test, "Gb") == 0)
+    {
+        semiTones = ((octaveFloat - 4) * 12) - 2;
+        hertzFloat = (pow(2, (semiTones / 12)) * 440);
+        // printf("hertzFIRST is %i\n", hertz);
+        hertzFloat = round(hertzFloat / (pow(2, (one / 12))));
+    }
+
+
 
     hertz = hertzFloat;
     return hertz;
