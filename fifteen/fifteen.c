@@ -29,8 +29,6 @@ int board[DIM_MAX][DIM_MAX];
 // dimensions
 int d;
 
-    // int blankRow;
-    // int blankColumn;
 
 // prototypes
 void clear(void);
@@ -53,8 +51,7 @@ int main(int argc, string argv[])
     d = atoi(argv[1]);
     if (d < DIM_MIN || d > DIM_MAX)
     {
-        printf("Board must be between %i x %i and %i x %i, inclusive.\n",
-            DIM_MIN, DIM_MIN, DIM_MAX, DIM_MAX);
+        printf("Board must be between %i x %i and %i x %i, inclusive.\n", DIM_MIN, DIM_MIN, DIM_MAX, DIM_MAX);
         return 2;
     }
     // int board[d][d];
@@ -161,7 +158,7 @@ void greet(void)
 void init(void)
 {
     // TODO
-        // for each row
+    //  for each row
     //     for each column
     //         set value for tile
 
@@ -169,11 +166,7 @@ void init(void)
     int maxNum = (d * d) - 1;
     int row;
     int column;
-    // string blankSpace = " __";
-    // int tileRow;
-    // int tileColumn;
-    // int blankRow;
-    // int blankColumn;
+
 
     for (row = 0; row < d; row++)
     {
@@ -208,12 +201,10 @@ void draw(void)
             if (board[row][column] == 0)
             {
                 printf("%2s |", blankSpace);
-                // blankRow = row;
-                // blankColumn = column;
             }
             else
             {
-               printf(" %2i |", board[row][column]);
+                printf(" %2i |", board[row][column]);
             }
         }
         printf("\n");
@@ -235,37 +226,30 @@ bool move(int tile)
     int blankRow;
     int blankColumn;
 
-    if (board[d - 1][d - 1] == 0)
+
+    if (tile < 0 || tile > (d * d - 1))
     {
-        blankRow = d - 1;
-        blankColumn = d - 1;
+        return false;
     }
-    //   if (tile < 0 || tile > (d * d - 1))
-    // {
-    //     return false;
-    // }
 
 
-        for (row = 0; row < d; row++)
+    for (row = 0; row < d; row++)
+    {
+        for (column = 0; column < d; column++)
         {
-            for (column = 0; column < d; column++)
+            if (board[row][column] == 0)
             {
-                if (board[row][column] == 0)
-                {
-                    blankRow = row;
-                    blankColumn = column;
-                }
-                if (board[row][column] == tile)
-                {
-                    // printf("tile is at board[%i][%i]", rowFinder, columnFinder);
-                    tileRow = row;
-                    tileColumn = column;
-                    // printf("board [%i][%i] %i\n", i, j, board[i][j]);
-                }
+                blankRow = row;
+                blankColumn = column;
+            }
+            if (board[row][column] == tile)
+            {
+                tileRow = row;
+                tileColumn = column;
             }
         }
+    }
 
-//   printf("tile is now at is board[%i]    [%i]\n", board[tileRow][tileColumn], board[blankRow][blankColumn]);
 
     if (board[tileRow][tileColumn + 1] == 0 && tileColumn + 1 < d)
     {
@@ -305,10 +289,6 @@ bool move(int tile)
         return true;
     }
 
-    // else
-    // {
-    //     return false;
-    // }
     return false;
 }
 
@@ -319,44 +299,39 @@ bool move(int tile)
 bool won(void)
 {
     // TODO
-    // int row;
-    // int column;
-    // bool winner;
     int column;
     int row;
-    // int previous = board[0][0];
-    int next = 1;
+    int test = 1;
 
+    // loop thru entire board
+    // to start, if the first number on board == 1 (test), then increment test to 2 and check again to see if the next number == 2.
+    // then increment test. if it does not equal the test, then it will fall through to return false
     for (row = 0; row < d; row++)
     {
-    for (column = 0; column < d; column++)
+        for (column = 0; column < d; column++)
         {
-            if (board[row][column] == next) //&& board[row][column] != 0)
+            if (board[row][column] == test)
             {
-               if (next < (d * d) - 1)
-               {
-                   next++;
-               }
-              else
-              {
-                  next = 0;
-              }
-            }
-            // else
-            // {
-            //     winner = false;
-            // }
-            // previous = board[row][column];
-            // next++;
-            else
-            {
-                return false;
-                // next = 2;
+                test++;
             }
         }
     }
 
-    // printf("winner is %i\n", column); // 1 is true     0 is false
-    // return winner;
-    return true;
+    // this will check if test makes it up to the last number on the board before 0 (the last tile. if it does, it needs to check
+    // if the the last number on the board is indeed 0. if it is, we know we have won and return true. if not, return false
+    if (test == (d * d))
+    {
+        if (board[d - 1][d - 1] == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    return false; // if the numbers are not in order the code should fall to here and return false
+
+
 }
