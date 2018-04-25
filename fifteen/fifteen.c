@@ -192,8 +192,6 @@ void draw(void)
     // TODO
     string blankSpace = " __";
 
-
-
     for (int row = 0; row < d; row++)
     {
         for (int column = 0; column < d; column++)
@@ -226,12 +224,10 @@ bool move(int tile)
     int blankRow;
     int blankColumn;
 
-
     if (tile < 0 || tile > (d * d - 1))
     {
         return false;
     }
-
 
     for (row = 0; row < d; row++)
     {
@@ -249,7 +245,6 @@ bool move(int tile)
             }
         }
     }
-
 
     if (board[tileRow][tileColumn + 1] == 0 && tileColumn + 1 < d)
     {
