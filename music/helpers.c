@@ -1,3 +1,8 @@
+//PRjm: interesting way of doing duration with if/else, I never thought of that.
+//Though you may have simplified it by mulitplying division by 8, and returning the result, would save a few steps of computation
+//Good use of comments and variable naming in your frequency function, make everything very easy to follow
+//Good use of switch cases in your frequency function, keeps everything in good order, I used if/else statements for mine and it is a mess to read/follow
+
 // Helper functions for music
 #include <stdio.h>
 #include <cs50.h>

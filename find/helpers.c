@@ -1,3 +1,8 @@
+//PRjm: It was cool to see the bubble sort implemented, I did selection sort for mine. It would be interesting to see which method is more efficient, though they are likely very similar
+//Great use of comments, makes it very easy to understand what is happening throughout
+//One note, the commented out code and testing stuff sometimes drowns out the comments
+//I'm not sure if lines 56-59 are necessary, I just spent a while trying to figure it out, but I'm not sure end could go below 0 with size>0
+
 /**
  * helpers.c
  *

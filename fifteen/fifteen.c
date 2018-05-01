@@ -1,3 +1,9 @@
+//PRjm: good use a variable names, I like how when doing the for loops, you use row and column instead of letters to make it more descriptive
+// the use of the blankspace variable also makes it very clear what is going on
+//comments for the if/else statements in the move function would be helpful, it is difficult to tell what is happening (I did the same thing, and looking at my own code now it is tough to read)
+//good comments in your won function, interesting way of checking if the last tile is correct (that it equals 0) - the function is easy to follow
+
+
 /**
  * fifteen.c
  *
